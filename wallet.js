@@ -4,7 +4,7 @@ import * as web3 from '@solana/web3.js';
 const clusterEndpoint = 'https://api.devnet.solana.com';
 const walletFile = 'wallet.json';
 
-// Function to create a new Solana wallet and save it to wallet.json
+// Function to create Solana wallet and store it in the wallet.JSON
 const createWallet = async () => {
   const newWallet = web3.Keypair.generate();
   const walletData = {
@@ -18,7 +18,7 @@ const createWallet = async () => {
   return newWallet;
 };
 
-// Function to perform airdrop
+// Function to airdrop
 const airdrop = async (amount: number = 1) => {
   const walletData = JSON.parse(fs.readFileSync(walletFile, 'utf8'));
   const connection = new web3.Connection(clusterEndpoint, 'confirmed');
@@ -28,7 +28,7 @@ const airdrop = async (amount: number = 1) => {
   console.log(`${amount} SOL Airdrop completed.`);
 };
 
-// Function to check wallet balance
+// Function to check current wallet balance
 const checkBalance = async () => {
   const walletData = JSON.parse(fs.readFileSync(walletFile, 'utf8'));
   const connection = new web3.Connection(clusterEndpoint, 'confirmed');
@@ -40,7 +40,7 @@ const checkBalance = async () => {
   fs.writeFileSync(walletFile, JSON.stringify(walletData, null, 2));
 };
 
-// Function to transfer SOL to another address
+// Function to transfer SOL to another wallet address
 const transfer = async (recipientAddress: string, amount: number) => {
   const walletData = JSON.parse(fs.readFileSync(walletFile, 'utf8'));
   const connection = new web3.Connection(clusterEndpoint, 'confirmed');
